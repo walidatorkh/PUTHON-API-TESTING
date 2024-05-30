@@ -1,14 +1,18 @@
 import requests
 from assertpy import assert_that
+from colorama import init, Fore
+
+# Initialize colorama
+init()
 
 response = requests.get("https://reqres.in/api/users", params={"page": "2"})
 print(f"response: {response.status_code}")
 print(response.ok)
 json_response = response.json()
-print(f"json_response: {json_response}")
-print(f"json_response: {json_response['per_page']}")
-print(f"total_pages" in json_response.keys())
-print(f"total_pagesssss" in json_response.keys())
+print(Fore.GREEN + f"json_response: {json_response}")
+print(Fore.LIGHTGREEN_EX + f"json_response: {json_response['per_page']}")
+print(Fore.LIGHTMAGENTA_EX + f"total_pages" in json_response.keys())
+print(Fore.MAGENTA + f"total_pagesssss" in json_response.keys())
 
 def test_get_all_users_status_code():
     response = requests.get("https://reqres.in/api/users", params={"page": "2"})
