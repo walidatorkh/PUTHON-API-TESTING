@@ -1,5 +1,12 @@
 import requests
 from assertpy import assert_that
+from colorama import init, Fore
+
+# Initialize colorama
+init()
+
+# Example usage
+# print(Fore.RED + "This text will be displayed in red.")
 
 def test_register_user_happy_flow():
     register_user_data = {
@@ -32,7 +39,9 @@ def test_register_user_missing_password():
     response_json = response.json()
     assert_that(response_json).contains_key("error")
     assert_that(response_json).contains_entry({"error": "Missing password"})
-    print(response.json()["error"])
-    print("####################")
+    print(Fore.RED + response.json()["error"])
+    print(Fore.RED + "####################")
+    print(Fore.GREEN + "####################")
+    print(Fore.BLUE + "####################")
     # assert_that(response_json["error"]).is_not_empty()
     # print(response_json["error"])

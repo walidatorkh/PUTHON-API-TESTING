@@ -1,5 +1,9 @@
 import requests
 from assertpy import assert_that
+from colorama import init, Fore
+
+# Initialize colorama
+init()
 
 
 def test_user_creation():
@@ -13,7 +17,7 @@ def test_user_creation():
     #
     # creation_user_data = { **name_entry, **job_entry}
     creation_user_data = name_entry|job_entry
-    print(f"creation_user_data: {creation_user_data}")
+    print(Fore.LIGHTCYAN_EX + f"creation_user_data: {creation_user_data}")
     
     response = requests.post(
         url="https://reqres.in/api/users",
@@ -25,7 +29,7 @@ def test_user_creation():
     assert_that(response.reason).is_equal_to("Created")
     
     json_response = response.json()
-    print(json_response["name"])
+    print(Fore.RED + json_response["name"])
     assert_that(response.json()["name"]).is_equal_to(name)
     assert_that(json_response["job"]).is_equal_to(job)
     assert_that(json_response).contains_entry(name_entry)

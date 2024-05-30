@@ -1,6 +1,5 @@
 import requests
 from assertpy import assert_that
-import pytest
 
 
 def test_get_user_status_code_and_ok():
