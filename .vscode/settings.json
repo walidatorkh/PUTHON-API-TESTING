@@ -1,0 +1,6 @@
+{
+    "editor.fontSize": 20,
+    "editor.fontWeight": "normal",
+    "chat.editor.fontSize": 20,
+    "python.analysis.typeCheckingMode": "basic"
+}
