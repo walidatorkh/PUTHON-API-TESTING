@@ -5,6 +5,7 @@ from colorama import init, Fore
 # Initialize colorama
 init()
 
+
 # Example usage
 # print(Fore.RED + "This text will be displayed in red.")
 
@@ -17,13 +18,13 @@ def test_register_user_happy_flow():
         url="https://reqres.in/api/register",
         json=register_user_data
     )
-    
+
     assert_that(response.status_code).is_equal_to(200)
     assert_that(response.ok).is_true()
     response_json = response.json()
     assert_that(response_json).contains_key("id")
     assert_that(response_json).contains_key("token")
-    
+
 
 def test_register_user_missing_password():
     register_user_data = {
@@ -33,7 +34,7 @@ def test_register_user_missing_password():
         url="https://reqres.in/api/register",
         json=register_user_data
     )
-    
+
     assert_that(response.status_code).is_equal_to(400)
     assert_that(response.ok).is_false()
     response_json = response.json()
